@@ -11,9 +11,10 @@
 |ボトムケース|左右1個ずつ|
 |プレート|左右1枚ずつ|
 |M2×4mmねじ|18個|
+|1.5mm六角レンチ|1個|
 |M2インサート|19個|
 |インサート練習用ブロック|1個|
-|1.5mm六角レンチ|18個|
+|1.5mm六角レンチ|1個|
 |滑り止め|8個|
 |消音フォーム|1枚|
 |フォームカットヘルパー|1枚|
@@ -22,15 +23,27 @@
 |スライドスイッチ|2個|
 |PHコネクタ|2個|
 |電池用基板|2枚|
-|ボタン電池(CR2032)|4個|
 |ボタン電池ホルダー|4個| 
-|ダイオード|4個| 
+|ショットキーバリアダイオード|4個| 
 |コンデンサ|2個| 
 |PHコネクタ付きケーブル|2個| 
+
+| ![parts](./img/parts/case.jpg) |  ![parts](./img/parts/plate.jpg) | ![parts](./img/parts/screw.jpg) | ![parts](./img/parts/allenkey.jpg) |
+| ---- | ---- | ---- | ---- |
+| ケース | プレート | ねじ | 六角レンチ |
+| ![parts](./img/parts/insert.jpg) |  ![parts](./img/parts/block.jpg) | ![parts](./img/parts/bumpon.jpg) | ![parts](./img/parts/foam.jpg) |
+| インサート | インサート練習用ブロック | 滑り止め | 消音フォーム |
+| ![parts](./img/parts/foamcuthelper.jpg) |  ![parts](./img/parts/mainpcb.jpg) | ![parts](./img/parts/tactileswitch.jpg) | ![parts](./img/parts/slideswitch.jpg) |
+| フォームカットヘルパー | 本体基板 | タクトスイッチ | スライドスイッチ |
+| ![parts](./img/parts/phconnector.jpg) |  ![parts](./img/parts/batterypcb.jpg) | ![parts](./img/parts/coincellholder.jpg) | ![parts](./img/parts/diode.jpg) |
+| PHコネクタ | 電池用基板 | ボタン電池ホルダー | ショットキーバリアダイオード |
+| ![parts](./img/parts/capacitor.jpg) | ![parts](./img/parts/phcable.jpg) |  |  |
+| コンデンサ | PHコネクタ付きケーブル |  |  | 
 
 ### 追加で用意する部品
 |部品|個数|
 |---|---|
+|ボタン電池(CR2032)|4個|
 |MX互換スイッチ|48|
 |MX用キーキャップ|1u 42個、1.25u 4個、1.5u 2個|
 
