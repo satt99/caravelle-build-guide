@@ -55,7 +55,7 @@
 
 1. ダイオード×2を取り付ける
 
-    | ![batterypcb](./img/batterypcb/diode1.jpg) |  ![batterypcb](./img/batterypcb/diode2.jpg) |　![batterypcb](./img/batterypcb/diode3.jpg) | 
+    | ![batterypcb](./img/batterypcb/diode1.jpg) | ![batterypcb](./img/batterypcb/diode2.jpg) | ![batterypcb](./img/batterypcb/diode3.jpg) | 
     | ---- | ---- | ---- |
     | 片側のパッドに予備はんだを盛る | ダイオードの向きに注意しつつ、予備はんだをつけたパッドにダイオードをはんだ付けする（基板の`コ`の字型のシルクの縦線とダイオードの印字の縦線を揃える） | もう片側のパッドもはんだ付けする |
 
