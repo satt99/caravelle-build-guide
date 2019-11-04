@@ -26,51 +26,60 @@
 
 ### 工具
 組み立てには電子工作に使用する工具が一通り必要です。下記のページなどを参考に工具を用意しましょう。
-- [Helix キーボードキットの製作に必要な工具メモ | gist.github.com](https://gist.github.com/mtei/6957107a676ddfa85bde0ae41f8fa849)
-- [第8回「自作キーボードのつくりかた #2」組み立てる道具とはんだ付け編 | Youtube](https://youtu.be/LOC53FeU-QM)
-- [自作キーボードを作るために必要なもの | 自作キーボード温泉街の歩き方](https://salicylic-acid3.hatenablog.com/entry/2018/11/24/%E8%87%AA%E4%BD%9C%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89%E3%82%92%E4%BD%9C%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA%E3%82%82%E3%81%AE#%E8%87%AA%E4%BD%9C%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89%E3%81%A7%E5%BF%85%E8%A6%81%E3%81%AA%E3%82%82%E3%81%AE)
-- [自作キーボードの組み立てに使っている工具 | yfuku blog](https://blog.yfuku.com/entry/keybord_build_tool)
+* [Helix キーボードキットの製作に必要な工具メモ | gist.github.com](https://gist.github.com/mtei/6957107a676ddfa85bde0ae41f8fa849)
+* [第8回「自作キーボードのつくりかた #2」組み立てる道具とはんだ付け編 | Youtube](https://youtu.be/LOC53FeU-QM)
+* [自作キーボードを作るために必要なもの | 自作キーボード温泉街の歩き方](https://salicylic-acid3.hatenablog.com/entry/2018/11/24/%E8%87%AA%E4%BD%9C%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89%E3%82%92%E4%BD%9C%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA%E3%82%82%E3%81%AE#%E8%87%AA%E4%BD%9C%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89%E3%81%A7%E5%BF%85%E8%A6%81%E3%81%AA%E3%82%82%E3%81%AE)
+* [自作キーボードの組み立てに使っている工具 | yfuku blog](https://blog.yfuku.com/entry/keybord_build_tool)
 
 なおインサートをケースに熱圧入する都合上、はんだごては温度調整機能がついているもの（HAKKO FX600等）が必須です。
 
 ## 組み立て
 ### 概要
 次の順番でキットを組み立てていきます。
-- 電池用基板を組み立てる
-- 本体基板を組み立てる
-- 本体基板の動作確認
-- 本体基板にスイッチを取り付ける
-- ケースを組み立てる
+* 電池用基板を組み立てる
+* 本体基板を組み立てる
+* 本体基板の動作確認
+* 本体基板にスイッチを取り付ける
+* ケースを組み立てる
 
 ### 電池用基板に部品を組み立てる
 はじめに電池用基板を組み立てます。  
 
 1. ボタン電池ホルダー×2を取り付ける
-    * ホルダーの片脚をペンチでまっすぐ伸ばす
-    * 電池を入れる側（小さいでっぱりと反対側）が基板の角を向くようにホルダーの両脚を基板に挿す
-    * まっすぐにした脚を再び折り曲げ、基板と平行にする
-    * ホルダーの脚を基板にはんだ付けする
-    * もう片方のホルダーも同様の手順で取り付ける
+
+    | ![batterypcb](./img/batterypcb/coincellholder1.jpg) |  ![batterypcb](./img/batterypcb/coincellholder2.jpg) |
+    | ---- | ---- |
+    | ホルダーの片脚をペンチでまっすぐ伸ばす | 電池を入れる側（小さいでっぱりと反対側）が基板の角を向くようにホルダーの両脚を基板に挿す |
+    | ![batterypcb](./img/batterypcb/coincellholder3.jpg) | ![batterypcb](./img/batterypcb/coincellholder4.jpg) |
+    | まっすぐにした脚を再び折り曲げ、基板と平行にし、ホルダーの両脚を基板にはんだ付けする | もう片方のホルダーも同様の手順で取り付ける |
 
 1. ダイオード×2を取り付ける
-    * 片側のパッドに予備はんだを盛る
-    * ダイオードの向きに注意しつつ、予備はんだをつけたパッドにダイオードをはんだ付けする（基板の`コ`の字型のシルクの縦線とダイオードの印字の縦線を揃える）
-    * もう片側のパッドもはんだ付けする
+
+    | ![batterypcb](./img/batterypcb/diode1.jpg) |  ![batterypcb](./img/batterypcb/diode2.jpg) |　![batterypcb](./img/batterypcb/diode3.jpg) | 
+    | ---- | ---- | ---- |
+    | 片側のパッドに予備はんだを盛る | ダイオードの向きに注意しつつ、予備はんだをつけたパッドにダイオードをはんだ付けする（基板の`コ`の字型のシルクの縦線とダイオードの印字の縦線を揃える） | もう片側のパッドもはんだ付けする |
 
 1. コンデンサを取り付ける
-    * 片側のパッドに予備はんだを盛る
-    * 予備はんだをつけたパッドにコンデンサをはんだ付けする
-    * もう片側のパッドもはんだ付けする
 
-1. コネクタ付きケーブルを基板の左側のスルーホールに取り付ける
-    * 赤いケーブルをVCCにはんだ付けする
-    * 黒いケーブルをGNDにはんだ付けする
+    * ダイオードと同様の手順でコンデンサを基板にはんだ付けする
+
+1. PHコネクタ付きケーブルを基板の左側のスルーホールに取り付ける
+
+    | ![batterypcb](./img/batterypcb/cable1.jpg) |  ![batterypcb](./img/batterypcb/cable2.jpg) |
+    | ---- | ---- |
+    | 赤いケーブルをVCCに、黒いケーブルをGNDにはんだ付けする | ケーブルがショートしないように必要に応じて余分な配線を切る |
 
 1. ボタン電池を入れ、テスターで電圧を確認する
-    * 正しく組み立てられていれば、VCCとGNDの間で2.5Vほどが測定される
+
+    | ![batterypcb](./img/batterypcb/tester.jpg) |
+    | ---- | ---- |
+    | 正しく組み立てられていれば、VCCとGNDの間で3Vほどが測定されます |
 
 1. 2個目の電池用基板も1個目と同様の手順で部品を取り付けます。
-    * ただし、ケーブルは1個目と逆で右側のスルーホールに取り付けます。
+
+    | ![batterypcb](./img/batterypcb/batterypcb.jpg) |
+    | ---- | ---- |
+    | ただし、ケーブルは1個目と逆の位置に取り付けます |
 
 ### 本体基板を組み立てる
 次に本体基板を組み立てます。
@@ -165,20 +174,20 @@ BLEに対応するため、ファームウェアにはSekigonn氏の[nrf52対応
 1. リポジトリを取得する  
   nrf52対応のqmk_firmwareは[こちら](https://github.com/sekigon-gonnoc/qmk_firmware/tree/nrf52)
 
-	- 既にqmk_firmwareを使っていて別のブランチとして用意したい場合
+	* 既にqmk_firmwareを使っていて別のブランチとして用意したい場合
 	```
         git remote add sekigon https://github.com/sekigon-gonnoc/qmk_firmware.git
         git fetch sekigon
         git checkout -b nrf52 sekigon/nrf52
 	```
 	
-	- 既にqmk_firmwareを使っていて別のフォルダに置きたい場合
+	* 既にqmk_firmwareを使っていて別のフォルダに置きたい場合
 	  
 	 ```
 		git clone  -b nrf52 https://github.com/sekigon-gonnoc/qmk_firmware.git ble_micro_pro
 	 ```
 	  
-	- 初めて使う場合
+	* 初めて使う場合
 	
 	```
         git clone --depth 1 -b nrf52 https://github.com/sekigon-gonnoc/qmk_firmware.git
@@ -276,7 +285,7 @@ OpenOCD(0.10.0)とST-Linkを使用して書き込みます。
 |BLE_NUS_MIN_INTERVAL| 左右間の通信間隔(ms)　下げると消費電力が増える。デフォルトは30|
 |BLE_NUS_MAX_INTERVAL| 左右間の通信間隔(ms)　下げると消費電力が増える。デフォルトは60|
 |BLE_HID_MAX_INTERVAL| 端末との通信間隔(ms)　下げると消費電力が増える。デフォルトは90|
-|BLE_HID_SLAVE_LATENCY| 端末との通信パラメータ　下げると消費電力が増える。HID‗INTERVALに反比例させると良い？　デフォルトは4|
+|BLE_HID_SLAVE_LATENCY| 端末との通信パラメータ　下げると消費電力が増える。HID_INTERVALに反比例させると良い？　デフォルトは4|
 
 ## 使用上の注意
 - 長時間使用しない場合やキーボードを持ち運ぶ場合は電池の消耗を防ぐため、電源を切ってください。
