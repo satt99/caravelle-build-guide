@@ -44,7 +44,7 @@
 |部品|個数|
 |---|---|
 |ボタン電池(CR2032)|4個|
-|MX互換スイッチ|48|
+|MX互換スイッチ|48個|
 |MX用キーキャップ|1u 42個、1.25u 4個、1.5u 2個|
 
 ### 工具
@@ -183,7 +183,7 @@
 1. 組み立て完了です！
 
 ## ファームウェア書き込み
-BLEに対応するため、ファームウェアにはSekigonn氏の[nrf52対応のqmk_firmware](https://github.com/sekigon-gonnoc/qmk_firmware/tree/nrf52)を使用します。以下はSekigonn氏のSISO59ビルドガイドより引用。
+BLEに対応するため、ファームウェアにはSekigonn氏の[nrf52対応のqmk_firmware](https://github.com/sekigon-gonnoc/qmk_firmware/tree/nrf52)を使用します。
 
 1. リポジトリを取得する  
   nrf52対応のqmk_firmwareは[こちら](https://github.com/sekigon-gonnoc/qmk_firmware/tree/nrf52)
@@ -211,9 +211,9 @@ BLEに対応するため、ファームウェアにはSekigonn氏の[nrf52対応
 
 		make git-submodule
 
-1. NRFSDK v12.3.0を取得し、適当なディレクトリに展開する
+1. [NRFSDK v12.3.0](https://www.nordicsemi.com/Software-and-Tools/Software/nRF5-SDK/Download)を取得し、適当なディレクトリに展開する
 
-	* BLE Micro Pro用とはバージョンが異なります。バージョン番号は厳守してください。
+	* 技適の関係上、バージョン番号は厳守してください。
 
 1. 展開したディレクトリをmsys2などビルド環境の環境変数に設定する
 
@@ -232,33 +232,74 @@ pip install nrfutil
 ```
 
 ### 本体へのファームウェア書き込み
-1. マスタ(デフォルトは左手・スレーブ(右手)それぞれのファームウェアをビルドする
+#### ブートローダを使用した書き込み（推奨）
+Caravelle BLEにはブートローダが事前に書き込んであるため、無線通信によるファームウェアアップデートが可能です。
+
+1. スマートフォン・タブレットに[nRF Toolbox](https://apps.apple.com/jp/app/nrf-toolbox/id820906058)をインストール
+
+1. マスタ(左手側）、スレーブ(右手側)それぞれのファームウェアをビルドする
 
     ```
     make caravelle_ble/master:default:dfu_ble
     make caravelle_ble/slave:default:dfu_ble
     ```
 
-1. 完成したzipファイルをスマートフォンに移動、あるいは共有フォルダに移動する
+1. 生成されたzipファイルをスマートフォンに移動、あるいは共有フォルダに移動する
+    * zipファイルは`qmk_firmware`直下に生成されます
 
-1. スマートフォン・タブレットに[nRF Toolbox](https://play.google.com/store/apps/details?id=no.nordicsemi.android.nrftoolbox&hl=ja)をインストール(現時点ではPC版からは書き込めないようです。)
+1. スマートフォンに移動したzipファイルをnRF Toolboxにコピーする
 
-1. 書き込みたい基板の電源をタクトスイッチを押しながら入れる
-
-1. nRF ToolboxでDFUを選択し起動
+1. nRF Toolboxを起動し、DFUを選択
 
 1. SELECT FILEから先ほど用意したzipファイルを選択
 
-1. SELECT DEVICEで**DFU Targ**を選択
+1. 書き込みたい基板の電源をタクトスイッチを押しながら入れる
+
+1. SELECT DEVICEで`DFU Targ`を選択
 
 1. UPLOADを押し、書き込みを開始
 
+| ![firmware](./img/firmware/copyzip.png) |  ![firmware](./img/firmware/selectdevice.png) | ![firmware](./img/firmware/nrftoolbox.png) |
+| ---- | ---- | ---- |
+| nRF Toolboxにコピー | SELECT DEVICEで`DFU Targ`を選択 | UPLOADを押し、書き込みを開始 |
+
+#### SWDを使用した書き込み（ブートローダが使用できなくなった場合のみ）
+OpenOCD(0.10.0)とST-Linkを使用して書き込みます。
+
+1. 基板裏面のシルクを参考にして、ST-Linkを`VCC GND SWDIO SWDCLK`に接続する
+
+1. MCUを初期化し、ソフトデバイスを書き込む
+    ```
+    openocd -s /mingw64/share/openocd/scripts -f interface/stlink.cfg -f target/nrf52.cfg -c init -c "reset init" -c halt -c "nrf5 mass_erase" -c "program s132_nrf52_3.0.0_softdevice.hex verify" -c reset -c exit
+    ```
+
+1. マスタ(左手側）、スレーブ(右手側)それぞれのファームウェアをビルドする
+
+    ```
+    make caravelle_ble/master:default
+    make caravelle_ble/slave:default
+    ```
+
+1. `qmk_firmware/.build`に生成されたhexファイル（例：`caravelle_ble_master_default.hex`）を書き込む
+    ```
+    openocd -s /mingw64/share/openocd/scripts -f interface/stlink.cfg -f target/nrf52.cfg -c init -c "reset init" -c halt -c "nrf5 mass_erase" -c "program FIRMWARE_NAME.hex verify" -c "reset" -c exit
+    ```
+
 ## トラブルシューティング
 ### ペアリングが出来ない・出来なくなった
-
 端末とマスタのペアリング情報を削除してから再ペアリングを実行してみてください。
  - 特定のペアリング情報を削除するにはDEL_IDxをキーマップに割り当てて実行してください。
- - スレーブも含む全てのペアリングを削除するには最上段の中心3つのキー（デフォルトの配列では`WER`に相当）を押しながら電源を起動してください。スレーブ側も同様の手順（`UIO`を押しながら起動）で削除できます。
+ - スレーブも含む全てのペアリングを削除するには、`DELBNDS`キーコードを入力するか、最上段の中心3つのキー（デフォルトの配列では`WER`に相当）を押しながら電源を起動してください。スレーブ側も同様の手順（`UIO`を押しながら起動）で削除できます。
+
+### 入力遅延が気になる
+入力遅延が気になる場合は、`caravelle_ble/config.h`内の下記のパラメタを編集（追記）します。
+
+|パラメータ|定義|
+|---|---|
+|BLE_NUS_MIN_INTERVAL| 左右間の通信間隔(ms)　下げると消費電力が増える。デフォルトは30|
+|BLE_NUS_MAX_INTERVAL| 左右間の通信間隔(ms)　下げると消費電力が増える。デフォルトは60|
+|BLE_HID_MAX_INTERVAL| 端末との通信間隔(ms)　下げると消費電力が増える。デフォルトは90|
+|BLE_HID_SLAVE_LATENCY| 端末との通信パラメータ　下げると消費電力が増える。HID‗INTERVALに反比例させると良い？　デフォルトは4|
 
 ## 使用上の注意
 - 長時間使用しない場合やキーボードを持ち運ぶ場合は電池の消耗を防ぐため、電源を切ってください。
@@ -267,5 +308,5 @@ pip install nrfutil
 ## 参考文献
 本ビルドガイドは下記を参考に執筆しました。
 - nrtkbb氏 [uzu42ビルドガイド](https://github.com/nrtkbb/Keyboards/blob/master/uzu42/build_guide_jp.md)
-- Sekigon氏 [SISO59 ビルドガイド](https://github.com/sekigon-gonnoc/SISO59-doc/blob/master/README.md)  
+- Sekigon氏 [SISO59ビルドガイド](https://github.com/sekigon-gonnoc/SISO59-doc/blob/master/README.md)、[BLE-Micro-Proドキュメント](https://github.com/sekigon-gonnoc/BLE-Micro-Pro/blob/master/README.md)  
 - yfuku氏 [Claw44ビルドガイド](https://blog.yfuku.com/entry/craw44_buildguide)
