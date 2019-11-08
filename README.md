@@ -212,7 +212,7 @@
     | 組み立て完了です！ |
 
 ## ファームウェア書き込み
-BLEに対応するため、ファームウェアにはSekigonn氏の[nrf52対応のqmk_firmware](https://github.com/sekigon-gonnoc/qmk_firmware/tree/nrf52)を使用します。
+BLEに対応するため、ファームウェアにはSekigon氏の[nrf52対応のqmk_firmware](https://github.com/sekigon-gonnoc/qmk_firmware/tree/nrf52)を使用します。
 
 1. リポジトリを取得する  
   nrf52対応のqmk_firmwareは[こちら](https://github.com/sekigon-gonnoc/qmk_firmware/tree/nrf52)
