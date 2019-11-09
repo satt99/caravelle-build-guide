@@ -288,7 +288,7 @@ Caravelle BLEにはブートローダが事前に書き込んであるため、�
 
 1. UPLOADを押し、書き込みを開始
 
-| ![firmware](./img/firmware/copyzip.png) |  ![firmware](./img/firmware/selectdevice.png) | ![firmware](./img/firmware/nrftoolbox.png) |
+| ![firmware](./img/firmware/copyzip.jpg) |  ![firmware](./img/firmware/selectdevice.jpg) | ![firmware](./img/firmware/nrftoolbox.jpg) |
 | ---- | ---- | ---- |
 | nRF Toolboxにコピー | SELECT DEVICEで`DFU Targ`を選択 | UPLOADを押し、書き込みを開始 |
 
