@@ -302,33 +302,31 @@ Caravelle BLEにはブートローダが事前に書き込んであるため、�
 | ---- | ---- | ---- |
 | nRF Toolboxにコピー | SELECT DEVICEで`DFU Targ`を選択 | UPLOADを押し、書き込みを開始 |
 
-#### SWDを使用した書き込み（ブートローダが使用できなくなった場合のみ）
-OpenOCD(0.10.0)とST-Linkを使用して書き込みます。
+#### SWDを使用した書き込み（初期化・ブートローダ再書き込み）
+OpenOCD(0.10.0)とST-Link V2を使用して書き込みます。(CMSIS-DAPでも可能なようですが、作者は未確認です。)
 
-1. 基板裏面のシルクを参考にして、ST-Linkを`VCC GND SWDIO SWDCLK`に接続する
+1. ST-Linkの`3.3V GND SWDIO SWDCLK`を基板の`VCC GND SWDIO SWDCLK`に接続する（基板裏面のシルクを参照）
 
 1. MCUを初期化し、ソフトデバイスを書き込む
     ```
     openocd -s /mingw64/share/openocd/scripts -f interface/stlink.cfg -f target/nrf52.cfg -c init -c "reset init" -c halt -c "nrf5 mass_erase" -c "program s132_nrf52_3.0.0_softdevice.hex verify" -c reset -c exit
     ```
 
-1. マスタ(左手側）、スレーブ(右手側)それぞれのファームウェアをビルドする
-
+1. 本リポジトリの[リリース](https://github.com/satt99/caravelle-build-guide/releases)からブートローダ（`caravelle_ble-bootloader.hex`）をダウンロードし書き込む
     ```
-    make caravelle_ble/master:default
-    make caravelle_ble/slave:default
+    openocd -f interface/stlink.cfg -f target/nrf52.cfg -c "program caravelle_ble-bootloader.hex verify" -c "reset" -c exit
     ```
 
-1. `qmk_firmware/.build`に生成されたhexファイル（例：`caravelle_ble_master_default.hex`）を書き込む
-    ```
-    openocd -s /mingw64/share/openocd/scripts -f interface/stlink.cfg -f target/nrf52.cfg -c init -c "reset init" -c halt -c "nrf5 mass_erase" -c "program FIRMWARE_NAME.hex verify" -c "reset" -c exit
-    ```
+1. 正しくブートローダが書き込めていれば、キーボードを起動し、端末からBluetoothデバイスのスキャンを実行すると`DFU Targ`と表示されます。この状態ではキーボードとしてのファームウェアが書き込まれていないので、[前項](#ブートローダを使用した書き込み（推奨）)を参考に無線通信でファームウェアを書き込みます。
 
 ## トラブルシューティング
 ### ペアリングが出来ない・出来なくなった
-端末とマスタのペアリング情報を削除してから再ペアリングを実行してみてください。
+端末とマスタ双方のペアリング情報を削除してから再ペアリングを実行してみてください。
  - 特定のペアリング情報を削除するにはDEL_IDxをキーマップに割り当てて実行してください
- - スレーブも含む全てのペアリングを削除するには、`DELBNDS`キーコードを入力するか、最上段の中心3つのキー（デフォルトの配列では`WER`に相当）を押しながら電源を起動してください。スレーブ側も同様の手順（`UIO`を押しながら起動）で削除できます
+ - スレーブも含む全てのペアリングを削除するには、`DELBNDS`キーコードを入力します。  
+ （最上段の中心3つのキー（デフォルトの配列では`WER`に相当）を押しながら電源を起動することでもペアリングを削除できます。スレーブ側も同様の手順（`UIO`を押しながら起動）で削除できます。）
+
+それでも症状が改善しない場合は、[MCUの初期化](#SWDを使用した書き込み（初期化・ブートローダ再書き込み）)を試すのも一手です。
 
 ### 入力遅延が気になる
 入力遅延が気になる場合は、`caravelle_ble/config.h`内の下記のパラメタを編集します。
