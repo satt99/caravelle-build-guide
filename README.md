@@ -282,28 +282,34 @@ Caravelle BLEにはブートローダが事前に書き込んであるため、�
     make caravelle_ble/master:default:dfu_ble
     make caravelle_ble/slave:default:dfu_ble
     ```
+    * `qmk_firmware`直下に、`caravelle_ble_master_default.zip`と`caravelle_ble_slave_default.zip`という2つのzipファイルが生成されます
 
-1. 生成されたzipファイルをスマートフォンに移動、あるいは共有フォルダに移動する
-    * zipファイルは`qmk_firmware`直下に生成されます
-
-1. スマートフォンに移動したzipファイルをnRF Toolboxにコピーする
+1. 生成された2つのzipファイルを共有フォルダやメールを使用してスマートフォンに移動し、nRF Toolboxにコピーする
+    * iphoneを使用する自分は、「生成されたzipファイルをdropboxにコピー」→「iphoneのdropboxアプリからzipファイルを選択」→「`エクスポート`を選択」→「`nRF Toolboxにコピー`を選択」という手順で行っています
+    * 共有フォルダの代わりに、「自分宛てにzipファイルを添付したメールを送信」→「スマートフォンで受信したメールのzipファイルを選択」という風にメールを使用することもできます
 
 1. nRF Toolboxを起動し、DFUを選択
 
-1. SELECT FILEから先ほど用意したzipファイルを選択
+1. `SELECT FILE`から先ほど用意したzipファイルを選択
 
-1. 書き込みたい基板の電源をタクトスイッチを押しながら入れる
+1. 書き込みたい基板の電源をタクトスイッチを押しながら入れ、DFUモードに突入する
 
-1. SELECT DEVICEで`DFU Targ`を選択
+1. `SELECT DEVICE`で`DFU Targ`を選択
 
-1. UPLOADを押し、書き込みを開始
+1. `UPLOAD`を押し、ファームウェアを書き込み
+    * 注：書き込みが完了するまでスマートフォンと基盤の電源はOFFにしないこと
+    * 書き込み完了後、一旦電源をOFFにし、再度ONにすると、`Caravelle-BLE`あるいは`Nordic UART`として自動的にアドバタイズがはじまります。（注：
+    接続済みの端末がある場合はアドバタイズは開始されません。）
+    * まれに書き込み完了も`DFU Targ`と表示されつづけ、キーボードとしてのアプリケーションが起動しない場合があります。その場合、手順6から順に再びファームウェアの書き込みを行ってください。
 
 | ![firmware](./img/firmware/copyzip.jpg) |  ![firmware](./img/firmware/selectdevice.jpg) | ![firmware](./img/firmware/nrftoolbox.jpg) |
 | ---- | ---- | ---- |
 | nRF Toolboxにコピー | SELECT DEVICEで`DFU Targ`を選択 | UPLOADを押し、書き込みを開始 |
 
 #### SWDを使用した書き込み（初期化・ブートローダ再書き込み）
-OpenOCD(0.10.0)とST-Link V2を使用して書き込みます。(CMSIS-DAPでも可能なようですが、作者は未確認です。)
+OpenOCD(0.10.0)とST-Link V2を使用して書き込みます。  (CMSIS-DAPでも可能なようですが、作者は未確認です。)
+* ST-Link V2は、aliexpressやamazonで安価なクローン品を購入することができます
+* [pro microをCMSIS-DAP化](https://github.com/myelin/arduino-cmsis-dap)することも可能です
 
 1. ST-Linkの`3.3V GND SWDIO SWDCLK`を基板の`VCC GND SWDIO SWDCLK`に接続する（基板裏面のシルクを参照）
 
@@ -311,6 +317,7 @@ OpenOCD(0.10.0)とST-Link V2を使用して書き込みます。(CMSIS-DAPでも
     ```
     openocd -s /mingw64/share/openocd/scripts -f interface/stlink.cfg -f target/nrf52.cfg -c init -c "reset init" -c halt -c "nrf5 mass_erase" -c "program s132_nrf52_3.0.0_softdevice.hex verify" -c reset -c exit
     ```
+    * CMSIS-DAPを使用する場合は、`interface/stlink.cfg`を`interface/cmsis-dap.cfg`に変更します（次の手順でも同様）
 
 1. 本リポジトリの[リリース](https://github.com/satt99/caravelle-build-guide/releases)からブートローダ（`caravelle_ble-bootloader.hex`）をダウンロードし書き込む
     ```
