@@ -312,7 +312,7 @@ Caravelle BLEにはブートローダが事前に書き込んであるため、�
 #### SWDを使用した書き込み（初期化・ブートローダ再書き込み）
 OpenOCD(0.10.0)とST-Link V2を使用して書き込みます。  (CMSIS-DAPでも可能なようですが、作者は未確認です。)
 * ST-Link V2は、aliexpressやamazonで安価なクローン品を購入することができます
-* [pro microをCMSIS-DAP化](https://github.com/myelin/arduino-cmsis-dap)することも可能です
+* [pro microをCMSIS-DAP化](https://github.com/myelin/arduino-cmsis-dap)することも可能です(注：BL652の最大電圧は3.7Vなので、3.3V版のpro microを使用すること)
 
 1. ST-Linkの`3.3V GND SWDIO SWDCLK`を基板の`VCC GND SWDIO SWDCLK`に接続する（基板裏面のシルクを参照）
 
