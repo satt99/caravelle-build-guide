@@ -7,11 +7,11 @@
 ### 同梱品の確認
 | ![parts](./img/parts/case.jpg) |  ![parts](./img/parts/plate.jpg) | ![parts](./img/parts/foam.jpg) | ![parts](./img/parts/foamcuthelper.jpg) |
 | ---- | ---- | ---- | ---- |
-| トップケース＋ボトムケース：左右1個ずつ | プレート：左右1枚ずつ |  消音フォーム：140mm×200mm 1枚（or 140mm×100mm 2枚） | フォームカットヘルパー：1枚 |
+| トップケース＋ボトムケース：左右1個ずつ | プレート：左右1枚ずつ |  消音フォーム：140mm×200mm 1枚 or 140mm×100mm 2枚 or カット済 2枚 | フォームカットヘルパー：1枚 （フォームがカット済みのバージョンでは不要）|
 | ![parts](./img/parts/mainpcb.jpg) | ![parts](./img/parts/screw.jpg) | ![parts](./img/parts/allenkey.jpg) | ![parts](./img/parts/insert.jpg) |
 | 本体基板：左右1枚ずつ | M2×4mmねじ：18個 | 1.5mm六角レンチ：1個 | M2インサート：19個 |
 | ![parts](./img/parts/insertpracticecube.jpg) |  ![parts](./img/parts/bumpon.jpg) | ![parts](./img/parts/tactileswitch.jpg) | ![parts](./img/parts/slideswitch.jpg) |
-|インサート練習用ブロック：1個 | 滑り止め：8個 | タクトスイッチ：2個 | スライドスイッチ：2個 or 4個|
+|インサート練習用ブロック：1個 | 滑り止め：8個 | タクトスイッチ：2個 （本体基板に取付済の場合もあり）| スライドスイッチ：2個 or 4個|
 | ![parts](./img/parts/phconnector.jpg) |  ![parts](./img/parts/batterypcb.jpg) | ![parts](./img/parts/coincellholder.jpg) | ![parts](./img/parts/diode.jpg) |
 | PHコネクタ：2個 | 電池用基板：2枚 | ボタン電池ホルダー：4個 | ショットキーバリアダイオード：4個 |
 | ![parts](./img/parts/capacitor.jpg) | ![parts](./img/parts/phcable.jpg) |  |  |
@@ -96,6 +96,7 @@
 
 1. タクトスイッチ (SW3/SW4) を取り付ける
     * 電池基板のダイオードと同様の手順でタクトスイッチを基板にはんだ付けします
+    * 一部個体では取付済の状態で出荷されています。その場合、この手順は不要です。
 
 1. スライドスイッチ (SW1/SW2) を取り付ける
     * スライドスイッチの上下に注意します。スイッチの脚が付いている側が基板の下向きになるようにします
@@ -192,6 +193,7 @@
 1. 消音フォームを切り出す
     * フォームカットヘルパーの外周にそって消音フォームを2枚切り出します
     * 柔らかい素材のため、カッターで罫書き線を入れ、ハサミで切り出すという方式が簡単です
+    * 出荷時に消音フォームがカット済みの個体ではこの手順は不要です。
 
     | ![case](./img/case/foam.jpg) |
     | :----: |
