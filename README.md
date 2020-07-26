@@ -292,6 +292,10 @@ Caravelle BLEにはブートローダが事前に書き込んであるため、�
     ```
     * `qmk_firmware`直下に、`caravelle_ble_master_default.zip`と`caravelle_ble_slave_default.zip`という2つのzipファイルが生成されます
 
+    | ![case](./img/firmware/buildfirmware.png) |
+    | :----: |
+    | デバッグモードでビルドするため、上記画像のような警告が出ますが問題ありません。（ファームウェア更新時のバージョン番号チェックを避けるためデバッグモードが必要となります。） | 
+
 1. 生成された2つのzipファイルを共有フォルダやメールを使用してスマートフォンに移動し、nRF Toolboxにコピーする
     * iphoneを使用する自分は、「生成されたzipファイルをdropboxにコピー」→「iphoneのdropboxアプリからzipファイルを選択」→「`エクスポート`を選択」→「`nRF Toolboxにコピー`を選択」という手順で行っています
     * 共有フォルダの代わりに、「自分宛てにzipファイルを添付したメールを送信」→「スマートフォンで受信したメールのzipファイルを選択」という風にメールを使用することもできます
