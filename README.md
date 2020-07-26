@@ -7,7 +7,7 @@
 ### 同梱品の確認
 | ![parts](./img/parts/case.jpg) |  ![parts](./img/parts/plate.jpg) | ![parts](./img/parts/foam.jpg) | ![parts](./img/parts/foamcuthelper.jpg) |
 | ---- | ---- | ---- | ---- |
-| トップケース＋ボトムケース：左右1個ずつ | プレート：左右1枚ずつ |  消音フォーム：140mm×200mm 1枚 or 140mm×100mm 2枚 or カット済 2枚 | フォームカットヘルパー：1枚 （フォームがカット済みのバージョンでは不要）|
+| トップケース＋ボトムケース：左右1個ずつ | プレート：左右1枚ずつ |  消音フォーム：カット前 or カット済み 2枚 | フォームカットヘルパー：1枚 （フォームがカット済み場合は不要）|
 | ![parts](./img/parts/mainpcb.jpg) | ![parts](./img/parts/screw.jpg) | ![parts](./img/parts/allenkey.jpg) | ![parts](./img/parts/insert.jpg) |
 | 本体基板：左右1枚ずつ | M2×4mmねじ：18個 | 1.5mm六角レンチ：1個 | M2インサート：19個 |
 | ![parts](./img/parts/insertpracticecube.jpg) |  ![parts](./img/parts/bumpon.jpg) | ![parts](./img/parts/tactileswitch.jpg) | ![parts](./img/parts/slideswitch.jpg) |
@@ -191,9 +191,9 @@
     | インサートを熱圧入したトップケース | インサートを熱圧入したボトムケース |
 
 1. 消音フォームを切り出す
+    * 出荷時に消音フォームがカット済みの個体ではこの手順は不要です。
     * フォームカットヘルパーの外周にそって消音フォームを2枚切り出します
     * 柔らかい素材のため、カッターで罫書き線を入れ、ハサミで切り出すという方式が簡単です
-    * 出荷時に消音フォームがカット済みの個体ではこの手順は不要です。
 
     | ![case](./img/case/foam.jpg) |
     | :----: |
