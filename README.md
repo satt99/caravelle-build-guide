@@ -59,7 +59,7 @@
     | ---- | ---- | ---- |
     | 片側のパッドに予備はんだを盛ります | ダイオードの向きに注意しつつ、予備はんだをつけたパッドにダイオードをはんだ付けします（基板の逆`コ`の字型のシルクの縦線とダイオードの印字の縦線の向きを揃えます、シルクがかすれている場合は下の段の写真で向きを確認します） | もう片側のパッドもはんだ付けします |
     | ![batterypcb](./img/batterypcb/diodedirectionv11.jpg) | ![batterypcb](./img/batterypcb/diodedirectionv20.jpg) || 
-    | V1.1基板 | V2.0基板 ||
+    | V1.1基板 | V2.0基板以降 ||
 
 1. コンデンサ (C1) を取り付ける
     * ダイオードと同様の手順でコンデンサを基板にはんだ付けします
@@ -146,7 +146,7 @@
 1. 入力テストを行う
     * ピンセット等で各キーのスルーホールをショートさせ、文字が入力されることを確認します
     * [EK Switch Hitter](https://www.majorgeeks.com/files/details/switch_hitter.html)や[KeyboardTester.com](https://www.keyboardtester.com/)を使用するとどのキーが押されたか簡単に確認できます
-    * [デフォルトのキーマップ](https://github.com/sekigon-gonnoc/qmk_firmware/blob/nrf52/keyboards/caravelle_ble/keymaps/default/keymap.c)についてはリンク先を確認してください。US配列のキーマップである点や、`LOWER`・`ADJUST`のレイヤー変更キー等の単独では入力がされないキーがある点、スマートフォンなどでは正しく入力されないキーコードもある点に注意
+    * デフォルトのキーマップについては[こちら](#キーマップ)を確認してください。US配列のキーマップである点や、`LOWER`・`ADJUST`のレイヤー変更キー等の単独では入力がされないキーがある点、スマートフォンなどでは正しく入力されないキーコードもある点に注意
 
 1. DFUボタンの動作確認を行う
     * 一度マスタ、スレーブの両方の電源を切ります
@@ -346,6 +346,34 @@ OpenOCD(0.10.0)とST-Link V2を使用して書き込みます。  (CMSIS-DAPで�
 | ![firmware](./img/firmware/openocd1.png) |  ![firmware](./img/firmware/openocd2.png) | ![firmware](./img/firmware/openocd3.png) |
 | ---- | ---- | ---- |
 | ソフトデバイスを書き込み | ブートローダ書き込み | ST-Linkを正しく接続できていないとこのようなエラーが発生します |
+
+# キーマップ
+
+Caravelleのデフォルトのキーマップはリンク先の[keymap.c](https://github.com/sekigon-gonnoc/qmk_firmware/blob/nrf52/keyboards/caravelle_ble/keymaps/default/keymap.c)にて定義されています。以下はそれを画像にしたものです。
+
+| ![firmware](./img/keymap/caravelle-default2.png) |  
+| ---- |
+| デフォルトキーマップ。黒文字：Baseレイヤー、青文字：Lowerレイヤー、赤文字：Raiseレイヤー、緑文字：Adjustレイヤー（次画像参照）。Home、End、PageUp、PageDown、Escは2020/07/27に追加しました。それ以前に出荷したものでは定義されていないので注意。| 
+
+| ![firmware](./img/keymap/caravelle-default-adjust.png) |  
+| ---- |
+| Adjustレイヤー。設定関連のマクロが定義されています。 |
+
+|マクロ|定義|
+|---|---|
+|AD_WO_L| マスタと新たな端末とのペアリングを開始|
+|ADV_IDX| マスタをX番目にペアリングした端末と接続（AD_WO_Lでペアリングしたものから順にID1、ID2…となります）|
+|DELBNDS| マスタに保存されたペアリング情報をすべて削除|
+|DEL_IDX| マスタに保存されたX番目のペアリング情報を削除|
+|BATT_LV| マスタ側の電池の電圧を表示（例：`2998mV`）|
+|ENT_SLP| スリープモードに突入|
+|ENT_DFU| DFUモードに突入|
+|RESET| マスタを再起動|
+
+
+
+
+
 
 ## トラブルシューティング
 ### ペアリングが出来ない・出来なくなった
