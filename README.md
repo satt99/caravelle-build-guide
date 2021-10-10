@@ -279,11 +279,10 @@ BLEに対応するため、ファームウェアにはSekigon氏の[nrf52対応�
     
 ### nrfutilのセットアップ(Windows(MSYS2))
 [nrfutil.exe](https://github.com/NordicSemiconductor/pc-nrfutil/releases)をダウンロードし、適当な場所に保存。パスを通す。
-    ```
-    export PATH=${PATH}:~/qmk_utils (~/qmk_utils直下にnrfutil.exeを保存した場合)
-    ```    
 
-~/qmk_utilに保存します。
+```
+export PATH=${PATH}:~/qmk_utils (~/qmk_utils直下にnrfutil.exeを保存した場合)
+```    
 
 ### nrfutilのセットアップ(Mac, Linux)
 pipでnrfutilを入れます。(python2.7)
